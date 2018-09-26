@@ -253,12 +253,12 @@ int ROSCameraObserver::getObservations(CameraObservations& cam_obs)
         ROS_DEBUG("using circle_detector, to find %dx%d modified circle grid", pattern_rows_, pattern_cols_);
         successful_find =
             cv::findCirclesGrid(image_roi_, pattern_size, centers,
-                                cv::CALIB_CB_SYMMETRIC_GRID | cv::CALIB_CB_CLUSTERING, circle_detector_ptr_);
+                                cv::CALIB_CB_SYMMETRIC_GRID , circle_detector_ptr_);
         if (!successful_find)
         {
           successful_find =
               cv::findCirclesGrid(image_roi_, pattern_size_flipped, centers,
-                                  cv::CALIB_CB_SYMMETRIC_GRID | cv::CALIB_CB_CLUSTERING, circle_detector_ptr_);
+                                  cv::CALIB_CB_SYMMETRIC_GRID , circle_detector_ptr_);
           flipped_successful_find = successful_find;
         }
       }
